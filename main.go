@@ -20,7 +20,7 @@ type Bs[T any] struct {
 }
 
 func BsAny[T any](v *T) (int, *[]byte) {
-	sz := int(unsafe.Sizeof(v))
+	sz := int(unsafe.Sizeof(*v))
 	return sz, (*[]byte)(unsafe.Pointer(&Bs[T]{v, sz, sz}))
 }
 func AnyBs[T any](bs *[]byte) *T {
